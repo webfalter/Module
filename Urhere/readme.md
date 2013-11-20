@@ -2,6 +2,10 @@ Modulname:
 =============
 URHere
 
+Version:
+--------------------------
+1.02.01
+
 
 Status:
 --------------------------
@@ -25,6 +29,7 @@ Autor(en):
 Sven777b
 Mistral
 saschapi
+oberbilker/mh
 
 Lizenz:
 --------------------------
