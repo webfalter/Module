@@ -1,0 +1,218 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<modul version='0.4' date='1230493323'>
+   <name>URHere</name>
+   <cat>Navigation</cat>
+   <version>1.2</version>
+   <author>1</author>
+   <created>1230477316</created>
+   <lastmodified>1230493314</lastmodified>
+   <deletable>1</deletable>
+   <description>Horizontale Pfad- Navigation in der Atrt von Oberpunkt -&gt; Unterpunkt -&gt; Unterpunkt</description>
+   <input>&lt;?PHP
+
+// VALREF
+// 00 CSS-Klasse font1
+// 01 CSS-Klasse font2
+// 02 CSS-Klasse font2
+// 03 Ebene 0 anzeigen?
+// 04 Aktuelle Seite anzeigen?
+// 06 Trenntemplate
+// 07 Gesamttemplate
+// 08 Startseiten ausblenden?
+// 09 Template der einzelnen Links
+// 10 Ausgaben umkehren?
+// 11 Template der aktuellen Seite
+
+// 99 Konfigurationsmodus
+
+//Modus 
+
+$mip_form['99']['desc'] = 'Konfigurationsmodus';
+$mip_form['99']['cat'] = 'option';
+$mip_form['99']['size'] = '1';
+$mip_form['99']['option_desc'][0] = 'Normal';
+$mip_form['99']['option_val'][0] =  '';
+$mip_form['99']['option_desc'][1] = 'Ausgeblendet';
+$mip_form['99']['option_val'][1] =  'hidden';
+$mip_form['99']['cms_var'] = 'MOD_VAR[99]';
+$mip_form['99']['cms_val'] = $cms_mod['value'][99];
+$mip_form['99']['flag'] = 'reload';
+
+$urhere['show_in_standard_mode'] = array(0,1,2,3,4,6,7,8,9,10,11);
+
+
+
+
+
+
+//Schriftart
+$mip_form['0']['desc'] = 'CSS-Klasse {font1}';
+$mip_form['0']['cat'] = 'app_css';
+$mip_form['0']['output_cat'] = 'option';
+$mip_form['0']['cms_var'] = 'MOD_VAR[0]';
+$mip_form['0']['cms_val'] = $cms_mod['value']['0'];
+$mip_form['0']['cms_val_default'] = '';
+$mip_form['0']['type'] = '';
+
+//Schriftart
+$mip_form['1']['desc'] = 'CSS-Klasse {font2}';
+$mip_form['1']['cat'] = 'app_css';
+$mip_form['1']['output_cat'] = 'option';
+$mip_form['1']['cms_var'] = 'MOD_VAR[1]';
+$mip_form['1']['cms_val'] = $cms_mod['value']['1'];
+$mip_form['1']['cms_val_default'] = '';
+$mip_form['1']['type'] = '';
+
+//Schriftart Trennzeichen
+$mip_form['2']['desc'] = 'CSS-Klasse {font3}';
+$mip_form['2']['cat'] = 'app_css';
+$mip_form['2']['output_cat'] = 'option';
+$mip_form['2']['cms_var'] = 'MOD_VAR[2]';
+$mip_form['2']['cms_val'] = $cms_mod['value']['2'];
+$mip_form['2']['cms_val_default'] = '';
+$mip_form['2']['type'] = '';
+
+
+//Mit Ebene 0
+$mip_form['3']['desc'] = 'Ebene 0 mit anzeigen? (1. Ordner)';
+$mip_form['3']['cat'] = 'chk';
+$mip_form['3']['option_var']['0'] = 'MOD_VAR[3]';
+$mip_form['3']['option_val']['0'] = $cms_mod['value']['3'];
+$mip_form['3']['option_desc']['0'] = 'ja';
+$mip_form['3']['option_val_select']['0'] = 'true';
+
+//Mit aktueller Seite
+$mip_form['4']['desc'] = 'aktuelle Seite mit anzeigen?';
+$mip_form['4']['cat'] = 'chk';
+$mip_form['4']['option_var']['0'] = 'MOD_VAR[4]';
+$mip_form['4']['option_val']['0'] = $cms_mod['value']['4'];
+$mip_form['4']['option_desc']['0'] = 'ja';
+$mip_form['4']['option_val_select']['0'] = 'true';
+
+//Startseiten ausblenden?
+$mip_form['8']['desc'] = 'Startseiten ausblenden?';
+$mip_form['8']['cat'] = 'chk';
+$mip_form['8']['option_var']['0'] = 'MOD_VAR[8]';
+$mip_form['8']['option_val']['0'] = $cms_mod['value']['8'];
+$mip_form['8']['option_desc']['0'] = 'ja';
+$mip_form['8']['option_val_select']['0'] = 'true';
+
+// Trennsymbol
+$mip_form['6']['desc'] = 'Trennzeichen zwischen Links &lt;small&gt;{font1}, {font2}, {font3}';
+$mip_form['6']['cat'] = 'txt';
+$mip_form['6']['cms_var'] = 'MOD_VAR[6]';
+$mip_form['6']['cms_val'] = $cms_mod['value']['6'];
+$mip_form['6']['cms_val_default'] = ' &amp;rArr; ';
+
+//Ausgaben umkehren
+$mip_form['10']['desc'] = 'Ausgaben umkehren';
+$mip_form['10']['cat'] = 'chk';
+$mip_form['10']['option_var']['0'] = 'MOD_VAR[10]';
+$mip_form['10']['option_val']['0'] = $cms_mod['value']['10'];
+$mip_form['10']['option_desc']['0'] = 'ja';
+$mip_form['10']['option_val_select']['0'] = 'true';
+
+// Template der aktuellen Seite
+$mip_form['11']['cat'] = 'txtarea';
+$mip_form['11']['type'] = 'long';
+$mip_form['11']['rows'] = '1';
+$mip_form['11']['desc'] = 'Template der aktuellen Seite &lt;small&gt;{name}, {link}, {font1}, {font2}, {font3}&lt;/small&gt;';
+$mip_form['11']['cms_var'] = 'MOD_VAR[11]';
+$mip_form['11']['cms_val'] = $cms_mod['value']['11'];
+$mip_form['11']['cms_val_default'] = '&lt;a href=&quot;{link}&quot; class=&quot;{font1}&quot;&gt;{name}&lt;/a&gt;';
+
+
+// Template der Links
+$mip_form['9']['cat'] = 'txtarea';
+$mip_form['9']['type'] = 'long';
+$mip_form['9']['rows'] = '1';
+$mip_form['9']['desc'] = 'Link-Template &lt;small&gt;{name}, {link}, {font1}, {font2}, {font3}&lt;/small&gt;';
+$mip_form['9']['cms_var'] = 'MOD_VAR[9]';
+$mip_form['9']['cms_val'] = $cms_mod['value']['9'];
+$mip_form['9']['cms_val_default'] = '&lt;a href=&quot;{link}&quot; class=&quot;{font1}&quot;&gt;{name}&lt;/a&gt;';
+
+// Gesamt - Template
+$mip_form['7']['cat'] = 'txtarea';
+$mip_form['7']['type'] = 'long';
+$mip_form['7']['rows'] = '1';
+$mip_form['7']['desc'] = 'Template &lt;small&gt;{nav}&lt;/small&gt;';
+$mip_form['7']['cms_var'] = 'MOD_VAR[7]';
+$mip_form['7']['cms_val'] = $cms_mod['value']['7'];
+$mip_form['7']['cms_val_default'] = '&lt;nobr&gt;{nav}&lt;/nobr&gt;';
+
+mip_formsp($mip_form['99']);
+
+
+if ($cms_mod['value'][99] != 'advanced')
+{
+	foreach($mip_form AS $urhere['id']=&gt;$urhere['mip'])
+	{
+		if (($cms_mod['value'][99] == 'hidden') || !in_array($urhere['id'], $urhere['show_in_standard_mode']))
+		{
+			$mip_form[$urhere['id']]['cat'] = 'hidden';
+			$mip_form[$urhere['id']]['cms_var'] = 'MOD_VAR[' . $urhere['id'] . ']';
+			$mip_form[$urhere['id']]['cms_val'] = $cms_mod['value'][$urhere['id']];
+		}
+	}
+}
+
+
+mip_formsp($mip_form['0']);
+mip_formsp($mip_form['1']);
+mip_formsp($mip_form['2']);
+mip_formsp($mip_form['3']);
+mip_formsp($mip_form['4']);
+mip_formsp($mip_form['8']);
+mip_formsp($mip_form['6']);
+mip_formsp($mip_form['10']);
+mip_formsp($mip_form['9']);
+mip_formsp($mip_form['11']);
+mip_formsp($mip_form['7']);
+unset($mip_form);
+?&gt;</input>
+   <output>&lt;CMSPHP&gt;
+$a = $idcat;
+$mod['path'] = array();
+
+while($a &gt; 0 &amp;&amp; $catlist_level[$a] &gt; 0){
+	array_push($mod['path'],$a);
+	$a = $con_tree[$a]['parent'];
+}
+if(&quot;MOD_VALUE[3]&quot; == 'true') { array_push($mod['path'],$a); };
+
+$mod['rpath'] = array_reverse($mod['path']);
+$mod['array'] = array();
+foreach ($mod['rpath'] as $a){
+	$mod['tmp'] = str_replace(&quot;{font1}&quot;,&quot;MOD_VALUE[0]&quot;,&quot;MOD_VALUE[9]&quot;);
+	$mod['tmp'] = str_replace(&quot;{font2}&quot;,&quot;MOD_VALUE[1]&quot;,$mod['tmp']);
+	$mod['tmp'] = str_replace(&quot;{font3}&quot;,&quot;MOD_VALUE[2]&quot;,$mod['tmp']);
+	$mod['tmp'] = str_replace(&quot;{name}&quot;,$con_tree[$a]['name'],$mod['tmp']);
+	$mod['tmp'] = str_replace(&quot;{link}&quot;,$con_tree[$a]['link'],$mod['tmp']);
+	array_push($mod['array'] , $mod['tmp']);
+};
+if(&quot;MOD_VALUE[4]&quot; == 'true') {
+	if (&quot;MOD_VALUE[8]&quot; != 'true' || $con_side[$idcatside]['is_start'] != '1') {
+		$mod['tmp'] = str_replace(&quot;{font1}&quot;,&quot;MOD_VALUE[0]&quot;,&quot;MOD_VALUE[11]&quot;);
+		$mod['tmp'] = str_replace(&quot;{font2}&quot;,&quot;MOD_VALUE[1]&quot;,$mod['tmp']);
+		$mod['tmp'] = str_replace(&quot;{font3}&quot;,&quot;MOD_VALUE[2]&quot;,$mod['tmp']);
+		$mod['tmp'] = str_replace(&quot;{name}&quot;,$con_side[$idcatside]['name'],$mod['tmp']);
+		$mod['tmp'] = str_replace(&quot;{link}&quot;,$con_side[$idcatside]['link'],$mod['tmp']);
+		array_push($mod['array'], $mod['tmp']);
+	};
+};
+
+if(&quot;MOD_VALUE[10]&quot; == 'true') { $mod['array'] = array_reverse($mod['array']); };
+$mod['glue'] = str_replace(&quot;{font1}&quot;,&quot;MOD_VALUE[0]&quot;,&quot;MOD_VALUE[6]&quot;);
+$mod['glue'] = str_replace(&quot;{font2}&quot;,&quot;MOD_VALUE[1]&quot;,$mod['glue']);
+$mod['glue'] = str_replace(&quot;{font3}&quot;,&quot;MOD_VALUE[2]&quot;,$mod['glue']);
+$mod['output'] = implode($mod['glue'], $mod['array']);
+echo str_replace('{nav}', $mod['output'], &quot;MOD_VALUE[7]&quot;);
+
+unset($a, $mod);
+&lt;/CMSPHP&gt;</output>
+   <config>4=true&amp;6=+&amp;7=%3Cstrong+class%3D%5C%22hidden%5C%22%3ESie+befinden+sich+derzeit+hier+in+der+Struktur+dieser+Webseite%3A%3C%2Fstrong%3E%0D%0A++++++++%3Col%3E%7Bnav%7D%3C%2Fol%3E%0D%0A++++++++%3Ca+href%3D%5C%22%23top%5C%22+class%3D%5C%22hidden%5C%22%3EZur%C3%BCck+zum+Seitenanfang.%3C%2Fa%3E&amp;9=%3Cli%3E%3Ca+href%3D%5C%22%7Blink%7D%5C%22%3E%7Bname%7D%3C%2Fa%3E%3C%2Fli%3E&amp;11=%3Cli+class%3D%5C%22last%5C%22%3E%7Bname%7D%3C%2Fli%3E</config>
+   <repository_id>mod:f85bd11a7839e81e5e787bee97693b9a:c4db009c</repository_id>
+   <install_sql></install_sql>
+   <uninstall_sql></uninstall_sql>
+   <update_sql></update_sql>
+</modul>
