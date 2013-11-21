@@ -4,7 +4,7 @@ URHere
 
 Version:
 --------------------------
-1.02.01
+2.0.0
 
 
 Status:
@@ -12,7 +12,7 @@ Status:
 stable
 
 
-Bechreibung:
+Beschreibung:
 --------------------------
 Stellt eine "Brotkrümelnavigation" zur Verfügung. Seiten und Ordner werden
 automatisch hierarchisch aus dem Seitenbaum ausgelesen
@@ -30,6 +30,7 @@ Sven777b
 Mistral
 saschapi
 oberbilker/mh
+Torsten Hofmann
 
 Lizenz:
 --------------------------
@@ -37,7 +38,7 @@ GPL
 
 Benötigte Sefrengo Version:
 --------------------------
->= 01.91.00 (Sefrengo 1.2 alpha2)
+>= Sefrengo v1.5.0
 
 Installation:
 ---------------------------------------------------------------------------

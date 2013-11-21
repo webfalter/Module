@@ -1,6 +1,19 @@
 Changelog
 ================================================================================================
 
+UHRere v2.0.0
+------------------------------------------------------------------------------------------------
+Internal versionnumber: 2.0.0<br/>
+Release: 21.11.2013
+
+* Notiz: Sefrengo v1.5.0 nach Update Config leeren, neu erstellen
+* ADDED: Template Tabs
+* CHANGED: Verwendung der API
+* CHANGED: Konfiguration
+* CHANGED: Frontendausgabe
+* REMOVED: CSS Font 1-3
+* REMOVED: $con_side $con_tree
+
 UHRere v1.02.01
 ------------------------------------------------------------------------------------------------
 Internal versionnumber: 01.02.01<br/>
