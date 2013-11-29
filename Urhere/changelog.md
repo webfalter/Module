@@ -1,6 +1,14 @@
 Changelog
 ================================================================================================
 
+UHRere v2.0.1
+------------------------------------------------------------------------------------------------
+Internal versionnumber: 2.0.1<br/>
+Release: 29.11.2013
+
+* Notiz: Sefrengo v1.5.0 nach Update Config leeren, neu erstellen
+* CHANGED: API Anpassung catlist_level
+
 UHRere v2.0.0
 ------------------------------------------------------------------------------------------------
 Internal versionnumber: 2.0.0<br/>

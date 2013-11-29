@@ -4,7 +4,7 @@ URHere
 
 Version:
 --------------------------
-2.0.0
+2.0.1
 
 
 Status:
@@ -26,11 +26,11 @@ Startseiten können ausgeblendet werden
 
 Autor(en):
 --------------------------
-Sven777b
-Mistral
-saschapi
-oberbilker/mh
-Torsten Hofmann
+ * Sven777b
+ * Mistral
+ * saschapi
+ * oberbilker/mh
+ * Torsten Hofmann
 
 Lizenz:
 --------------------------

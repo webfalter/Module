@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
-<modul version='0.4' date='1384981282'>
+<modul version='0.4' date='1385756382'>
    <name>URHere</name>
    <cat>Navigation</cat>
-   <version>2.0.0</version>
+   <version>2.0.1</version>
    <author>1</author>
    <created>1122308829</created>
-   <lastmodified>1384980569</lastmodified>
+   <lastmodified>1385756372</lastmodified>
    <deletable>1</deletable>
    <description>Horizontale Pfad- Navigation in der Atrt von Oberpunkt -&gt; Unterpunkt -&gt; Unterpunkt</description>
    <input>&lt;?PHP
@@ -21,7 +21,7 @@
 // 10 Ausgaben umkehren?
 // 11 Template der aktuellen Seite
 // 12 Startseite link anzeigen
-$version = '2.0.0';
+$version = '2.0.1';
 $autoren = 'Sven777b, Mistral, saschapi, oberbilker/mh, Torsten Hofmann &lt;a href=&quot;http://htweb.bplaced.net/&quot;&gt;htweb.bplaced.net&lt;/a&gt;';
 
 // Config
@@ -183,16 +183,17 @@ if($is_dev){
  *
  */
       public function __construct($mvars){
-		    $this-&gt;setMvars($mvars);
-		    $this-&gt;pageinfos = sf_factoryGetObjectCache('PAGE', 'Pageinfos');
-		    $this-&gt;catinfos = sf_factoryGetObjectCache('PAGE', 'Catinfos');
-	    }
+        $this-&gt;setMvars($mvars);
+	$this-&gt;pageinfos = sf_factoryGetObjectCache('PAGE', 'Pageinfos');
+        $this-&gt;catinfos = sf_factoryGetObjectCache('PAGE', 'Catinfos');
+	$this-&gt;cattreeinfos = sf_factoryGetObjectCache('PAGE', 'Cattree');	    
+     }
 /**
  *
  */
 	    public function index(){
-		    $out = $this-&gt;constructContent();
-		    return $out;
+              $out = $this-&gt;constructContent();
+              return $out;
 	    }
 /**
  *
@@ -210,7 +211,9 @@ if($is_dev){
         global $idcat, $con_tree, $con_side, $idcatside;
         $a = (int)$idcat;
         $mod['path'] = array();
-        while($a &gt; 0 &amp;&amp; $catlist_level[$a] &gt; 0){
+        $newlevel = $this-&gt;cattreeinfos-&gt;getParent($idcat,true);
+        
+while($a &gt; 0 &amp;&amp; $newlevel &gt; 0){
 	        array_push($mod['path'],$a);
 	        $a = $this-&gt;catinfos-&gt;getParent($a);
         }
@@ -270,7 +273,7 @@ if($is_dev){
 $is_dev = false;
 &lt;/CMSPHP&gt;</output>
    <config></config>
-   <repository_id>mod:f85bd11a7839e81e5e787bee97693b9a:4c8380ca</repository_id>
+   <repository_id>mod:f85bd11a7839e81e5e787bee97693b9a:0e58e573</repository_id>
    <install_sql></install_sql>
    <uninstall_sql></uninstall_sql>
    <update_sql></update_sql>
